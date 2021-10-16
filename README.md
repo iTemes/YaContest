@@ -1,0 +1,2 @@
+# YaContest
+Contest Tasks
