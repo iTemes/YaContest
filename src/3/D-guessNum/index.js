@@ -17,41 +17,38 @@ function writeResult(result) {
     }); 
 }
 
-function getEqualCount(values) {
-    const [arr1, arr2] = values;
-    const objHash = {}    
-    let ans = [];
-
-    if (arr2.length) {
-        arr1.forEach(element => {
-            objHash[element] = element;
-        });
-    
-        arr2.forEach(item => !objHash.hasOwnProperty(item) && ans.push(item));
-    } else ans = new Set(...arr1);
-
-    return ans = [...ans];
-}
-
 
 function getGuessNum(biggestNum, guesses) {
-    const answers = {
-        'NO': [],
-        'YES': [],
+    let no = new Set();
+    let yes = [];
+
+    for (let index = 1; index <= biggestNum; index++) {
+        yes.push(index)
     }
 
     for (let index = 0; index < guesses.length; index += 2) {
         const element = guesses[index];
         if (element === 'HELP') break;
-        console.log('element', element);
-        answers[guesses[index + 1]].push(...element.split(' '));
+
+        const ansType = guesses[index + 1];
+        const currentAnsSet = new Set(
+            [...element.split(' ')]
+            .map(Number)
+        );
+        
+
+        if (ansType === 'YES') {
+            yes = yes.filter(x => currentAnsSet.has(x));
+        } else {
+           for (let i of currentAnsSet) no.add(i);
+        }
     }
+    yes = yes
+    .filter(v => !no.has(v))
+    .sort((a, b) => a - b)
+    .join(' ');
 
-    console.log('answers', answers);
-    const ans = getEqualCount(Object.values(answers)).join(' ');
-
-    console.log('####ans', ans);
-    writeResult(ans + '\n');
+    writeResult(yes + '\n');
 }
 
 getGuessNum(biggestNum, guesses);
