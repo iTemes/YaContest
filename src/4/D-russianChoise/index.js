@@ -62,8 +62,8 @@ function distributionOfSeats(seats) {
     firstElectoralQuotient = votesCount / votesAmount;
 
     partyObjects.forEach(party => {
-        party.seats = Math.round(party.votes / firstElectoralQuotient);
-        party.quotient = +(party.votes / firstElectoralQuotient).toFixed(2);
+        party.seats = Math.floor(party.votes / firstElectoralQuotient);
+        party.quotient = party.votes / firstElectoralQuotient;
         votesAmountEmpty += party.votes;
     });
 

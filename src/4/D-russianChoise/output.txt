@@ -1,2 +1,3 @@
-Party number one 225
-Partytwo 225
+Party One 64
+Party Two 128
+Party Three 257
