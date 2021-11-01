@@ -23,16 +23,36 @@
 каждая в новой строке: номер цвета и сумму всех чисел данного цвета.
 */
 
+/*
+Python
+
+box_count = int(input())
+col_cnt = {}
+
+for _ in range(box_count):
+    color, value = map(int, input().split())
+    if color in col_cnt:
+        col_cnt[color] += value
+    else:
+        col_cnt[color] = value
+
+for key, value in sorted(col_cnt.items()):
+    print(f"{key} {value}")
+*/
+
 const fs = require("fs");
 const fileContent = fs.readFileSync("input.txt", "utf8");
 const [colorsNum, ...colorsArr] = fileContent.toString().trim().split('\n');
-var logger = fs.createWriteStream('output.txt', {
-    flags: 'a' // 'a' means appending (old data will be preserved)
-})
+
 
 function writeResult(result) {
-    logger.write(result)
+    fs.truncateSync('output.txt'); // Clean file
+    fs.writeFileSync('output.txt', result.toString(), (err) => {
+        if(err) throw err;
+        console.log('Result has been added!');
+    }); 
 }
+
 
 function colorsGrade(colorsArr) {
     const hashColors = {};
@@ -44,12 +64,14 @@ function colorsGrade(colorsArr) {
         } else hashColors[key] += BigInt(val);
     });
 
-    Object.entries(hashColors)
+    const ans = 
+        Object.entries(hashColors)
         .sort((a , b) => a[0] - b[0])
-        .forEach(item => {
-            writeResult(item.join(' ') + '\n');
-        });
-    logger.end();
+        .reduce((acc, item) => {
+            return acc += item.join(' ') + '\n'
+        }, '');
+
+    writeResult(ans);
 }
 
 colorsGrade(colorsArr);
