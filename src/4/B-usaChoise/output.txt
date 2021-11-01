@@ -1,0 +1,3 @@
+ivanov 900
+petr 70
+tourist 3
