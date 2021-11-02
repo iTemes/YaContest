@@ -37,7 +37,7 @@
   - A. [Толя-Карп](https://github.com/iTemes/YaContest/tree/master/src/4/A-colorsGrade) 🟡 (на JS TL после 18 теста, с таким же алгоритмом на Python проходит все)
   - B. [Выборы в США](https://github.com/iTemes/YaContest/tree/master/src/4/B-usaChoise) 🟢
   - C. [Частотный анализ](https://github.com/iTemes/YaContest/tree/master/src/4/C-frequencyAnalitic) 🟢
-  - D. Выборы Думы 🕓
+  - D. [Выборы Думы](https://github.com/iTemes/YaContest/tree/master/src/4/D-russianChoise) 🟢
   - E. Форум 🕓
 
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 5 (B) 🕓

@@ -1,3 +1,2 @@
-Party One 64
-Party Two 128
-Party Three 257
+Party number one 449
+Partytwo 1

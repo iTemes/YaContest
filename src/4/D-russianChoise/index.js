@@ -44,7 +44,7 @@ function distributionOfSeats(seats) {
     const partyObjects = [];
     const votesAmount = 450;
     let votesCount = 0;
-    let votesAmountEmpty = 0;
+    let votesAmountInUse = 0;
     let firstElectoralQuotient = 0;
     
     seats.forEach(seat => {
@@ -63,13 +63,18 @@ function distributionOfSeats(seats) {
 
     partyObjects.forEach(party => {
         party.seats = Math.floor(party.votes / firstElectoralQuotient);
-        party.quotient = party.votes / firstElectoralQuotient;
-        votesAmountEmpty += party.votes;
+        party.quotient = (party.votes / firstElectoralQuotient) - party.seats;
+        votesAmountInUse += party.seats;
     });
 
-    if (votesAmountEmpty < votesAmount) {
-        let votesForOthers = votesAmount - votesAmountEmpty;
-        console.log('votesForOthers', votesForOthers);
+    partySorted = [...partyObjects].sort((a , b) => {
+        return a.quotient === b.quotient ? b.votes - a.votes : b.quotient - a.quotient;
+    });
+
+    let votesForOthers = votesAmount - votesAmountInUse;
+    for (let index = 0; votesForOthers > 0; index++) {
+        partySorted[index].seats += 1;  
+        votesForOthers--; 
     }
 
     partyObjects.forEach(finalItem => writeResult(finalItem.party + ' ' + finalItem.seats + '\n'))
