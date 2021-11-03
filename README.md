@@ -38,7 +38,7 @@
   - B. [Выборы в США](https://github.com/iTemes/YaContest/tree/master/src/4/B-usaChoise) 🟢
   - C. [Частотный анализ](https://github.com/iTemes/YaContest/tree/master/src/4/C-frequencyAnalitic) 🟢
   - D. [Выборы Думы](https://github.com/iTemes/YaContest/tree/master/src/4/D-russianChoise) 🟢
-  - E. Форум 🕓
+  - E. [Форум](https://github.com/iTemes/YaContest/tree/master/src/4/E-forum) 🟡 (Пришлось подумать на решением, но сдача с 1-ой попытки);
 
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 5 (B) 🕓
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 6 (B) 🕓
