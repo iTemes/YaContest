@@ -28,7 +28,7 @@
 
 const fs = require("fs");
 const fileContent = fs.readFileSync("input.txt", "utf8");
-const forum = fileContent.toString().trim().split('\n');
+const [count, ...forum] = fileContent.toString().trim().split('\n');
 
 const logger = fs.createWriteStream('output.txt', {
     flags: 'a'
@@ -38,10 +38,49 @@ function writeResult(result) {
     logger.write(result)
 }
 
-function getForumTitles(forum) {
-    console.log(forum);
-   
+function getForumTitles(count, forum) {
+    const copy = [...forum];
+    const hashDialogs = [];
+    let currentMessage = 1;
+
+    for (let index = 0; index < copy.length; index++) {
+        const element = copy[index];
+
+        if (element === '0') {
+            const removed = copy.splice(index, 3);
+
+            hashDialogs.push(
+                {
+                    title: removed[1],
+                    messages: {
+                        [currentMessage]: removed[2]
+                    },
+                }
+            );
+            index--;
+            currentMessage++;
+        } else {
+            const removedMessage = copy.splice(index, 2);
+
+            for (const key in hashDialogs) {
+                const element = hashDialogs[key];
+                
+                if (element.messages[removedMessage[0]]) {
+                    element.messages[currentMessage] = removedMessage[1];
+                }
+            }
+
+            index--;
+            currentMessage++;
+        }
+        
+    }
+
+    hashDialogs.sort((a, b) => Object.keys(b.messages).length - Object.keys(a.messages).length)
+
+    const ans = hashDialogs[0].title;
+    writeResult(ans + '\n');
     logger.end();
 }
 
-getForumTitles(forum);
+getForumTitles(count, forum);
