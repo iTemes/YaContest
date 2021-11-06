@@ -44,7 +44,8 @@
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 5 (B) 🕓
 
   - A. [Префиксная сумма](https://github.com/iTemes/YaContest/tree/master/src/5/A-prefixSum) 🟢
-  - B. [Максимальная сумма](https://github.com/iTemes/YaContest/tree/master/src/5/B-maxSum) 🟢
+  - B. [Максимальная сумма](https://github.com/iTemes/YaContest/tree/master/src/5/B-maxSum) 🟡
+  - C. [Каждому по компьютеру](https://github.com/iTemes/YaContest/tree/master/src/5/С-computers) 🕓
 
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 6 (B) 🕓
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 7 (B) 🕓
