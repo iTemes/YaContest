@@ -31,11 +31,13 @@ function writeResult(result) {
 function getGroupsComputers(groupsOptions, students, computers) {
   const [groupCount, cabinetCount] = groupsOptions.split(" ").map(Number);
   const sortedStudents = students
+    .trim()
     .split(' ')
     .map(item => Number(item) + 1) // добавляем учителя
     .sort((a, b) => a - b);
 
   const sortedComputers = computers
+    .trim()
     .split(' ')
     .map((item, idx) => ({count: Number(item), order: idx + 1}))
     .sort((a, b) => a.count - b.count);
@@ -43,14 +45,10 @@ function getGroupsComputers(groupsOptions, students, computers) {
   let currentCabinet = 0;
   let ansGroups = new Array(groupCount).fill(0);
   let ansCabinets = 0;
-  console.log("Отсортированные группы", sortedStudents);
-  console.log("Отсортированные аудитории", sortedComputers);
+
 
   for (let i = 0; i < sortedStudents.length; i++) {
     while (currentCabinet <= sortedComputers.length - 1 && sortedStudents[i] > sortedComputers[currentCabinet].count) {
-      console.log('Попали в цикл');
-      console.log('sortedStudents[i]', sortedStudents[i], '<=');
-      console.log('currentCabinet', sortedComputers[currentCabinet].count);
       currentCabinet++;
     }
 
@@ -59,14 +57,10 @@ function getGroupsComputers(groupsOptions, students, computers) {
     }
 
     ansGroups[i] = sortedComputers[currentCabinet].order;
-    console.log('Добавили в - ', currentCabinet, sortedComputers[currentCabinet].order);
-    console.log('________________________');
     currentCabinet++;
     ansCabinets++;
 
   }
-  console.log('ansCabinets', ansCabinets);
-  console.log('ansGroups', ansGroups);
 
   writeResult(ansCabinets + '\n');
   writeResult(ansGroups.join(' ') + '\n');
