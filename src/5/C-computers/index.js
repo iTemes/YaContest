@@ -63,7 +63,7 @@ function getGroupsComputers(groupsOptions, students, computers) {
   sortedStudents.sort((a, b) => a.order - b.order);
 
   writeResult(ansCabinets + '\n');
-  // writeResult(ansGroups.join(' ') + '\n');
+
   sortedStudents.forEach(element => {
       writeResult(element.cabinet + ' ');
   });
