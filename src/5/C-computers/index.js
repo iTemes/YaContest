@@ -33,8 +33,8 @@ function getGroupsComputers(groupsOptions, students, computers) {
   const sortedStudents = students
     .trim()
     .split(' ')
-    .map(item => Number(item) + 1) // добавляем учителя
-    .sort((a, b) => a - b);
+    .map((item, idx) => ({count: Number(item) + 1, order: idx + 1, cabinet: 0})) // добавляем учителя
+    .sort((a, b) => a.count - b.count);
 
   const sortedComputers = computers
     .trim()
@@ -43,27 +43,31 @@ function getGroupsComputers(groupsOptions, students, computers) {
     .sort((a, b) => a.count - b.count);
 
   let currentCabinet = 0;
-  let ansGroups = new Array(groupCount).fill(0);
   let ansCabinets = 0;
 
 
   for (let i = 0; i < sortedStudents.length; i++) {
-    while (currentCabinet <= sortedComputers.length - 1 && sortedStudents[i] > sortedComputers[currentCabinet].count) {
+    while (currentCabinet <= sortedComputers.length - 1 && sortedStudents[i].count > sortedComputers[currentCabinet].count) {
       currentCabinet++;
     }
 
-    if (currentCabinet > sortedComputers.length - 1) {
+    if (currentCabinet > cabinetCount - 1) {
       break;
     }
 
-    ansGroups[i] = sortedComputers[currentCabinet].order;
+    sortedStudents[i].cabinet = sortedComputers[currentCabinet].order;
     currentCabinet++;
     ansCabinets++;
-
   }
 
+  sortedStudents.sort((a, b) => a.order - b.order);
+
   writeResult(ansCabinets + '\n');
-  writeResult(ansGroups.join(' ') + '\n');
+  // writeResult(ansGroups.join(' ') + '\n');
+  sortedStudents.forEach(element => {
+      writeResult(element.cabinet + ' ');
+  });
+  writeResult('\n');
   logger.end();
 }
 
