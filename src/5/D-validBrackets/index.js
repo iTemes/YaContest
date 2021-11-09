@@ -27,8 +27,38 @@ function writeResult(result) {
 }
 
 function isValidBrackets(brackets) {
-  console.log('brackets', brackets);
-  logger.end();
+  const bracketsArr = brackets.split('');
+  if (
+    bracketsArr[0] === ')' || 
+    bracketsArr.length % 2 || 
+    bracketsArr[bracketsArr.length - 1] === '(') {
+    return 'NO';
+  }
+
+  let right = 1;
+  const bracketsInUse = {};
+
+  for (let i = 0; i < bracketsArr.length; i++) {
+    while (bracketsInUse[i] && i < bracketsArr.length) {
+      i++;
+    }
+
+    while (right < bracketsArr.length - 1 && bracketsArr[right] === bracketsArr[i] && !bracketsInUse[right]) {
+      right++;
+    }
+
+    if (i < bracketsArr.length && bracketsArr[i] === '(') {
+      bracketsInUse[right] = true;
+      bracketsInUse[i] = true;
+    }
+    
+    if (right < bracketsArr.length - 1) {
+      right++;
+    }
+  }
+ 
+  return Object.keys(bracketsInUse).length === bracketsArr.length ? 'YES' : 'NO';
 }
 
-isValidBrackets(brackets);
+writeResult(isValidBrackets(brackets) + '\n');
+logger.end();
