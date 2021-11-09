@@ -47,7 +47,7 @@ function getGroupsComputers(groupsOptions, students, computers) {
 
 
   for (let i = 0; i < sortedStudents.length; i++) {
-    while (currentCabinet <= sortedComputers.length - 1 && sortedStudents[i].count > sortedComputers[currentCabinet].count) {
+    while (currentCabinet < sortedComputers.length && sortedStudents[i].count > sortedComputers[currentCabinet].count) {
       currentCabinet++;
     }
 
