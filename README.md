@@ -41,12 +41,17 @@
   - D. [Выборы Думы](https://github.com/iTemes/YaContest/tree/master/src/4/D-russianChoise) 🟢
   - E. [Форум](https://github.com/iTemes/YaContest/tree/master/src/4/E-forum) 🟡 (Пришлось подумать на решением, но сдача с 1-ой попытки);
 
-- Яндекс. Тренировки по алгоритмам 2.0, занятие 5 (B) 🕓
+- Яндекс. Тренировки по алгоритмам 2.0, занятие 5 (B) ✔️
 
   - A. [Префиксная сумма](https://github.com/iTemes/YaContest/tree/master/src/5/A-PrefixSum) 🟢
   - B. [Максимальная сумма](https://github.com/iTemes/YaContest/tree/master/src/5/B-maxSum) 🟡
   - C. [Каждому по компьютеру](https://github.com/iTemes/YaContest/tree/master/src/5/С-computers) 🟠 (Сложное для понимания условие => больше попыток на устранение ошибок, сдача с 3 попытки)
   - D. [Правильная, круглая, скобочная](https://github.com/iTemes/YaContest/tree/master/src/5/D-validBrackets) 🟡
-  - Е. [Сумма трех](https://github.com/iTemes/YaContest/tree/master/src/5/E-sumOfThree) 🟡
+  - Е. [Сумма трех](https://github.com/iTemes/YaContest/tree/master/src/5/E-sumOfThree) 🟡 (проблема с вводом данных в систему проверки)
+
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 6 (B) 🕓
+
+  - A. [Быстрый поиск в массиве](https://github.com/iTemes/YaContest/tree/master/src/6/A-fastSearch) 🟢
+  - B. [Номер левого и правого вхождения](https://github.com/iTemes/YaContest/tree/master/src/6/A-fastSearch)
+
 - Яндекс. Тренировки по алгоритмам 2.0, занятие 7 (B) 🕓
