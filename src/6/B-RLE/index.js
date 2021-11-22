@@ -10,7 +10,7 @@ function lBinSearch(numbers, n) {
     medium = Math.floor((left + right) / 2);
     numbers[medium] >= n ? (right = medium) : (left = medium + 1);
   }
-  return left;
+  return numbers[left] === n ? left + 1 : 0;
 }
 
 function rBinSearch(numbers, n) {
@@ -23,29 +23,22 @@ function rBinSearch(numbers, n) {
     numbers[medium] > n ? (right = medium - 1) : (left = medium);
   }
 
-  return left;
+  return numbers[left] === n ? left + 1 : 0;
 }
 
-function fastSearch(fileContent) {
+function RLE(fileContent) {
   const [arrLength, arr, queryCount, ...queryes] = fileContent.toString().trim().split('\n');
   const dataArr = arr.split(' ').map(Number);
-  const result = [];
+  const dataQueryes = queryes[0].split(' ').map(Number);
+  let result = ``;
 
-  dataArr.sort((a, b) => a - b);
+  for (let i = 0; i < dataQueryes.length; i++) {
+    const left = lBinSearch(dataArr, dataQueryes[i]);
+    const right = rBinSearch(dataArr, dataQueryes[i]);
 
-  console.log('dataArr', dataArr);
-
-  for (let i = 0; i < queryes.length; i++) {
-    const [left, right] = queryes[i].trim().split(' ').map(Number);
-
-    if (left > dataArr[dataArr.length - 1] || right < dataArr[0]) {
-      result.push(0);
-    } else {
-      const count = rBinSearch(dataArr, right) - lBinSearch(dataArr, left) + 1;
-      result.push(count > 0 ? count : 0);
-    }
+    result += `${left} ${right}\n`;
   }
-  return result.join(' ');
+  return result;
 }
 
-fs.writeFileSync('output.txt', fastSearch(fileContent));
+fs.writeFileSync('output.txt', RLE(fileContent));
